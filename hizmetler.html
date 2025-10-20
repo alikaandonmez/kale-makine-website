@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kale Makine | Hizmetlerimiz</title>
+  <meta name="description" content="Kale Makine olarak endüstriyel kıyma, hamur, zırh ve cutter makineleri için profesyonel tamir, bakım ve servis hizmeti sunmaktayız. Garantili çözümler.">
+
+  <style>
+    :root{
+      --blue:#002b5c;
+      --gold:#ffcc00;
+      --bg:#f3f4f6;
+      --text:#222;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html {
+      scroll-behavior: smooth;
+    }
+    body{
+      font-family:"Segoe UI",Arial,sans-serif;
+      background-color: var(--bg);
+      color:var(--text);
+    }
+    
+    /* ===== NAVBAR (TÜM SAYFALARDA AYNI) ===== */
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      background-color: #002b5c;
+      color: #fff;
+      padding: 10px 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+    .logo-left { display: flex; justify-content: flex-start; align-items: center; }
+    .logo { height: 100px; width: auto; }
+    header h1 { text-align: center; font-size: 32px; font-weight: 800; letter-spacing: 1px; color: #fff; text-transform: uppercase; margin: 0; }
+    header h1 a { color: inherit; text-decoration: none; }
+    nav ul { list-style: none; display: flex; justify-content: flex-end; align-items: center; gap: 25px; margin: 0; padding: 0; }
+    nav ul li a { display: inline-block; color: #fff; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; }
+    nav ul li a:hover { color: #ffc600; transform: scale(1.1); }
+    
+    /* ===== YENİ HİZMET DETAY SAYFASI STİLLERİ ===== */
+    .hizmet-detay-container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+    .hizmet-detay-container h1 {
+      text-align: center;
+      color: var(--blue);
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+    .sayfa-aciklamasi {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 60px;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hizmet-item {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 80px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .hizmet-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .hizmet-gorsel {
+      flex: 1 1 40%;
+    }
+    .hizmet-gorsel img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    .hizmet-aciklama {
+      flex: 1 1 60%;
+    }
+    .hizmet-aciklama h2 {
+      color: var(--blue);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    .hizmet-aciklama p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #444;
+    }
+
+    /* ===== SERVİS FORMU BUTONU STİLİ ===== */
+    .servis-form-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 2px solid var(--blue);
+      transition: all 0.3s ease;
+    }
+    .servis-form-btn:hover {
+      background-color: transparent;
+      color: var(--blue);
+    }
+    
+    /* ===== POP-UP FORM (MODAL) STİLLERİ ===== */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    .modal.aktif {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal-icerik {
+      position: relative;
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+    }
+    .modal.aktif .modal-icerik {
+      transform: translateY(0);
+    }
+    .modal-kapat {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 30px;
+      cursor: pointer;
+      color: #888;
+    }
+    .modal-icerik h2 { color: var(--blue); margin-bottom: 20px; }
+    .form-grup { margin-bottom: 20px; }
+    .form-grup label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+    /* --- Form içi eleman stilleri (select ve textarea) --- */
+.form-grup select,
+.form-grup textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  color: #333;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+/* --- Select kutusu --- */
+.form-grup select {
+  appearance: none;
+  height: 45px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23666' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 10px;
+  cursor: pointer;
+}
+
+/* --- Textarea kutusu --- */
+.form-grup textarea {
+  resize: none;
+  height: 110px;
+  line-height: 1.5;
+  overflow-y: auto;
+}
+
+/* --- Hover & Focus stilleri --- */
+.form-grup select:hover,
+.form-grup textarea:hover {
+  border-color: #888;
+}
+
+.form-grup select:focus,
+.form-grup textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0, 43, 92, 0.15);
+}
+  /* --- Butonun aktif/pasif görünümünü düzenliyoruz --- */
+.form-gonder-btn {
+  display: block;                /* 🔥 tam genişlikte */
+  width: 100%;
+  padding: 12px 0;
+  text-align: center;
+  background: linear-gradient(135deg, #25D366, #20b857);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+  margin-top: 10px;
+}
+
+/* --- Pasifken (disabled) görünüm --- */
+.form-gonder-btn:disabled {
+  background: #bcbcbc;
+  color: #eee;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Aktifken hover efekti --- */
+.form-gonder-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #28e070, #18a758);
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+  transform: scale(1.02);
+}
+
+
+    .form-gonder-btn:hover { background-color: #128C7E; }
+    
+    /* ===== FOOTER (TÜM SAYFALARDA AYNI) ===== */
+    footer{
+      background-color:var(--blue);
+      color:#ddd;
+      text-align:center;
+      padding:25px;
+      font-size:14px;
+    }
+    footer a{ color:var(--gold); text-decoration:none; }
+    footer a:hover{text-decoration:underline;}
+    
+    /* ===== MOBİL UYUMLULUK ===== */
+    @media (max-width: 768px) {
+      header { grid-template-columns: 1fr; padding: 10px 20px; justify-items: center; gap: 10px; }
+      header h1 { font-size: 24px; }
+      .logo { height: 70px; }
+      nav ul { justify-content: center; gap: 20px; }
+      nav ul li a { font-size: 14px; }
+      .hizmet-item, .hizmet-item:nth-child(even) {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body id="anasayfa">
+  <header>
+    <div class="logo-left">
+      <img src="Kale makine images/logo.png" alt="Kale Makine Logo" class="logo">
+    </div>
+    <h1><a href="index.html">KALE MAKİNE</a></h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">ANA SAYFA</a></li>
+        <li><a href="hizmetler.html">HİZMETLER</a></li>
+        <li><a href="index.html#hakkimizda">HAKKIMIZDA</a></li>
+        <li><a href="index.html#iletisim">İLETİŞİM</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="hizmet-detay-container">
+    <h1>Detaylı Hizmetlerimiz</h1>
+    <p class="sayfa-aciklamasi">Kale Makine olarak, endüstriyel mutfak ekipmanlarınız için sunduğumuz profesyonel tamir, bakım ve satış hizmetlerinin detaylarını aşağıda bulabilirsiniz.</p>
+
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel">
+        <img src="Kale makine images/kıyma.jpeg" alt="Kıyma Makinesi Tamiri ve Servisi">
+      </div>
+      <div class="hizmet-aciklama">
+        <h2>🔧 Kıyma Makinesi Tamiri ve Servisi</h2>
+        <p>İşletmenizin en önemli ekipmanlarından olan endüstriyel kıyma makineleriniz için kapsamlı servis hizmeti sunuyoruz. Zamanla körelen bıçakların bilenmesi, motor gücü onarımı, dişli sıyırma sorunları ve periyodik bakımlarla makinenizin ömrünü uzatıyoruz.</p>
+        <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
+      </div>
+    </article>
+
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel">
+        <img src="Kale makine images/zirh-makine.jpeg" alt="Zırh Kıyması ve Cutter Makinesi Tamiri">
+      </div>
+      <div class="hizmet-aciklama">
+        <h2>🔪 Zırh Kıyması ve Cutter Makinesi Tamiri</h2>
+        <p>Kebap ustalarının vazgeçilmezi olan zırh ve cutter makinelerinin bıçak bakımı, motor arızaları ve hazne sorunlarını gideriyoruz. Eti ezmeden, tam kıvamında parçalayan makinelerinizin ilk günkü keskinliğiyle çalışmasını sağlıyoruz.</p>
+        <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
+      </div>
+    </article>
+
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel">
+        <img src="Kale makine images/hamur.jpg" alt="Planet Tipi Hamur Yoğurma Makinesi Servisi">
+      </div>
+      <div class="hizmet-aciklama">
+        <h2>⚙️ Planet Tipi Hamur Yoğurma Servisi</h2>
+        <p>Pastane ve fırınların vazgeçilmezi olan planet mikserleriniz için kazan, motor, dişli ve kayış sorunlarında uzman servis hizmeti veriyoruz. Makinenizin verimini artıran periyodik bakımlarla işlerinizin aksamasını önlüyoruz.</p>
+        <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
+      </div>
+    </article>
+
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel">
+        <img src="Kale makine images/Spiral.jpeg" alt="Spiral Hamur Mikseri Servisi">
+      </div>
+      <div class="hizmet-aciklama">
+        <h2>🌀 Spiral Hamur Mikseri Servisi</h2>
+        <p>Yoğun ekmek, pide ve pizza hamurları için özel olarak tasarlanmış spiral mikserlerin bakım ve onarımını yapıyoruz. Kazan dönüş mekanizması, spiral kol ve kontrol paneli arızalarına hızlı ve garantili çözümler sunuyoruz.</p>
+        <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
+      </div>
+    </article>
+
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel">
+        <img src="Kale makine images/açma.jpg" alt="Hamur Açma Makinesi Onarımı">
+      </div>
+      <div class="hizmet-aciklama">
+        <h2>🧰 Hamur Açma Makinesi Servisi</h2>
+        <p>Lahmacun, pide ve pizza hamuru açma makinelerinizin merdane, kalınlık ayarı ve bıçak mekanizmalarındaki arızaları hızla gideriyoruz. Gürültülü çalışma, dengesiz açma gibi problemlere yerinde ve garantili çözümler sunuyoruz.</p>
+        <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
+      </div>
+    </article>
+
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel">
+        <img src="Kale makine images/soğan.webp" alt="Soğan Doğrama Makinesi Bakımı">
+      </div>
+      <div class="hizmet-aciklama">
+        <h2>🔩 Endüstriyel Soğan Doğrama Makinesi</h2>
+        <p>Restoran ve endüstriyel mutfaklarda kullanılan soğan doğrama makineleri için bıçak değişimi, motor bakımı ve kontrol paneli onarımı hizmetleri sunmaktayız. Hijyenik ve hızlı çözümlerle mutfağınızdaki yardımcınızın daima çalışır durumda olmasını sağlıyoruz.</p>
+        <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
+      </div>
+    </article>
+
+  </main>
+  
+  <footer id="iletisim">
+    <p>📍 Merkez: Ümraniye / İstanbul | Hizmet Alanı: Tüm Anadolu Yakası</p>
+    <p>📞 <a href="tel:+905357831854">0 (535) 783 18 54</a> | ✉️ <a href="mailto:info@kalemakine.com">info@kalemakine.com</a></p>
+    <p>🏭 Kale Makine — 2017'den Beri Et, Kıyma ve Hamur Makinelerinde Profesyonel Hizmet</p>
+    <p>© 2025 Kale Makine - Tüm Hakları Saklıdır.</p>
+  </footer>
+
+  <div id="servis-formu-modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-icerik">
+      <button class="modal-kapat">&times;</button>
+      <h2>Servis Talep Formu</h2>
+      <form id="whatsapp-formu">
+        <div class="form-grup">
+          <label for="talep-tipi">Talep Tipi:</label>
+          <select id="talep-tipi" name="talep-tipi">
+            <option value="Tamir">Tamir / Arıza Bildirimi</option>
+            <option value="Satis">Makine Satmak İstiyorum</option>
+            <option value="Fiyat">Fiyat Bilgisi Almak İstiyorum</option>
+          </select>
+        </div>
+        <div class="form-grup">
+          <label for="mesaj">Sorununuz veya Talebiniz:</label>
+          <textarea id="mesaj" name="mesaj" rows="4" maxlength="250" placeholder="Örnek: Makinenin motoru çalışmıyor, garip bir ses çıkarıyor... (Maksimum 250 karakter)"></textarea>
+<small id="char-count" style="display:block; text-align:right; color:#888; font-size:13px; margin-top:5px;">0 / 250</small>
+
+
+        </div>
+        <button type="submit" class="form-gonder-btn">WhatsApp'tan Gönder</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    
+      // ----- HTML ELEMENTLERİ -----
+      const formAcmaButonlari = document.querySelectorAll('.servis-form-btn');
+      const modal = document.getElementById('servis-formu-modal');
+      const modalKapatButonu = document.querySelector('.modal-kapat');
+      const modalOverlay = document.querySelector('.modal-overlay');
+      const whatsappFormu = document.getElementById('whatsapp-formu');
+      const modalBaslik = document.querySelector('.modal-icerik h2');
+      const telefonNumarasi = '905357831854';
+      const mesajAlani = document.getElementById('mesaj');
+      const gonderBtn = whatsappFormu.querySelector('.form-gonder-btn');
+      const charCount = document.getElementById('char-count');
+    
+      // ----- EMOJİ TEMİZLEYİCİ -----
+      function stripLeadingEmoji(str) {
+        if (!str) return "";
+        const cp = str.codePointAt(0);
+        if (cp && cp >= 0x1F000) {
+          const jump = cp > 0xFFFF ? 2 : 1;
+          return str.slice(jump).trim();
+        }
+        return str.trim();
+      }
+    
+      // ----- MODAL AÇMA -----
+      formAcmaButonlari.forEach(buton => {
+        buton.addEventListener('click', function (event) {
+          event.preventDefault();
+          const hizmetAciklama = buton.closest('.hizmet-aciklama');
+          const hizmetBasligiRaw = hizmetAciklama.querySelector('h2').innerText;
+          const hizmetBasligiTemiz = stripLeadingEmoji(hizmetBasligiRaw);
+          modalBaslik.innerText = `${hizmetBasligiTemiz} için Talep Formu`;
+          whatsappFormu.dataset.hizmet = hizmetBasligiTemiz;
+          modal.classList.add('aktif');
+        });
+      });
+    
+      // ----- MODAL KAPATMA -----
+      function modalKapat() {
+  modal.classList.remove('aktif');
+
+  // 🔹 Formu sıfırla (temizle)
+  whatsappFormu.reset();
+
+  // 🔹 Sayaç sıfırla
+  charCount.textContent = "0 / 250";
+  charCount.style.color = "#888";
+
+  // 🔹 Butonu pasif hale getir
+  gonderBtn.disabled = true;
+  gonderBtn.style.opacity = "0.6";
+  gonderBtn.style.cursor = "not-allowed";
+}
+
+      modalKapatButonu.addEventListener('click', modalKapat);
+      modalOverlay.addEventListener('click', modalKapat);
+    
+      // ----- WHATSAPP GÖNDERME -----
+      function isMobile() {
+        return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+      }
+      function buildWhatsAppURL(phone, text) {
+  const encoded = encodeURIComponent(text);
+
+  if (isMobile()) {
+    // 📱 Mobilde klasik yöntem
+    return `https://wa.me/${phone}?text=${encoded}`;
+  }
+
+  // 💻 Masaüstü için önce uygulamayı dene
+  const whatsappDesktopURL = `whatsapp://send?phone=${phone}&text=${encoded}`;
+
+  // 🔹 Yalnızca uygulama açılamazsa web'e yönlendir
+  // "visibilitychange" olayıyla bunu kontrol ediyoruz
+  let appOpened = false;
+  const timeout = setTimeout(() => {
+    if (!appOpened) {
+      window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`, '_blank', 'noopener');
+    }
+  }, 1000);
+
+  window.addEventListener("blur", () => { 
+    appOpened = true; 
+    clearTimeout(timeout); 
+  }, { once: true });
+
+  return whatsappDesktopURL;
+}
+
+
+    
+      whatsappFormu.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const hizmetAdi = whatsappFormu.dataset.hizmet || "Hizmet";
+        const talepTipi  = document.getElementById('talep-tipi').value;
+        const mesaj      = mesajAlani.value.trim();
+    
+        if (mesaj.length < 5) {
+          alert("Lütfen mesaj alanına en az 5 karakter yazınız.");
+          return;
+        }
+    
+        const whatsappMesaji =
+    `— YENİ SERVİS TALEBİ —
+    🛠️ Hizmet: ${hizmetAdi}
+    🗂️ Talep Tipi: ${talepTipi}
+    📝 Müşteri Notu: ${mesaj || "—"}
+    
+    ────────────
+    (Kale Makine Web Sitesi)`;
+    
+        const url = buildWhatsAppURL(telefonNumarasi, whatsappMesaji);
+        window.open(url, '_blank', 'noopener');
+        modalKapat();
+      });
+    
+      // ----- BUTON AKTİF / PASİF DURUMU -----
+      function kontrolEt() {
+        gonderBtn.disabled = mesajAlani.value.trim().length < 5;
+        gonderBtn.style.opacity = gonderBtn.disabled ? "0.6" : "1";
+        gonderBtn.style.cursor = gonderBtn.disabled ? "not-allowed" : "pointer";
+      }
+      mesajAlani.addEventListener('input', kontrolEt);
+      kontrolEt(); // Sayfa açıldığında kontrol et
+    
+      // ----- KARAKTER SAYACI -----
+      mesajAlani.addEventListener('input', () => {
+        const length = mesajAlani.value.length;
+        charCount.textContent = `${length} / 250`;
+    
+        // renk değişimi (opsiyonel)
+        if (length > 240) charCount.style.color = "red";
+        else if (length > 200) charCount.style.color = "orange";
+        else charCount.style.color = "#888";
+      });
+    
+    });
+    </script>
+    
+    
+</body>
+</html>

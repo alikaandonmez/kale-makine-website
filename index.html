@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kale Makine | Kıyma & Hamur Makineleri Tamiri</title>
+  <style>
+    :root{
+      --blue:#002b5c;
+      --gold:#ffcc00;
+      --bg:#f3f4f6;
+      --text:#222;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html {
+  scroll-behavior: smooth;
+}
+    body{
+      font-family:"Segoe UI",Arial,sans-serif;
+      background:linear-gradient(180deg,#ffffff 0%,var(--bg) 100%);
+      color:var(--text);
+    }
+
+    /* ===== NAVBAR ===== */
+    header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  background-color: #002b5c;
+  color: #fff;
+  padding: 10px 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 6px 15px rgba(255, 204, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+
+
+/* Sol: logo */
+.logo-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.logo {
+  height: 100px;
+  width: auto;
+}
+
+/* Orta: başlık */
+header h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0;
+}
+/* Başlığa eklenen linkin stilini düzeltme */
+header h1 a {
+  color: inherit; /* Rengini dışındaki H1 etiketinden miras al (yani beyaz olsun) */
+  text-decoration: none; /* Altındaki çizgiyi kaldır */
+}
+
+/* Sağ: Menü */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+nav ul li a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffc600;
+  transform: scale(1.1);
+}
+
+    /* ===== HERO ===== */
+    .hero{
+      background-color:#fff;
+      text-align:center;
+      padding:80px 20px 40px;
+      display: flex;
+  flex-direction: column;
+  align-items: center;
+    }
+    .hero h2{
+      background-color:#555;
+      color:#fff;
+      display:inline-block;
+      padding:15px 25px;
+      border-radius:8px;
+      font-size:24px;
+    }
+
+    /* ===== HAREKETE GEÇİRİCİ BUTON (CTA) ===== */
+.cta-button {
+  display: inline-block; /* Butonun diğer elementler gibi davranmasını sağlar */
+  margin-top: 30px; /* Üstündeki başlıkla arasına boşluk koyar */
+  padding: 15px 35px; /* Butonun iç boşlukları (daha büyük ve tıklanabilir yapar) */
+  background-color: var(--gold); /* Arkaplan rengi (sarı) */
+  color: var(--blue); /* Yazı rengi (lacivert) */
+  font-size: 20px; /* Yazı boyutu */
+  font-weight: 700; /* Yazı kalınlığı */
+  text-decoration: none; /* Altındaki çizgiyi kaldırır */
+  border-radius: 8px; /* Kenarları yuvarlaklaştırır */
+  transition: all 0.3s ease; /* Efektlerin yavaşça olmasını sağlar */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Hafif bir gölge verir */
+}
+
+.cta-button:hover {
+  transform: scale(1.05); /* Üzerine gelince butonu hafifçe büyütür */
+  background-color: #ffdb4d; /* Üzerine gelince arkaplan rengini biraz açar */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3); /* Gölgeyi belirginleştirir */
+}
+
+    /* ===== CONTENT ===== */
+    .content{
+      text-align:center;
+      padding:40px 60px;
+    }
+    .content h3{
+      color:var(--blue);
+      font-size: 28px;
+      font-weight:800;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .content h3::after {
+  content: "";
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: 2px;
+  background-color: var(--gold);
+  margin: 10px auto 25px;
+  opacity: 0.8;
+}
+
+
+    .content p{
+      font-size:17px;
+      color:#444;
+      line-height:1.6;
+      max-width:900px;
+      margin:0 auto 30px;
+    }
+
+    .services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 sütun, 2 satır olacak */
+  gap: 40px 60px; /* dikey ve yatay aralık */
+  justify-content: center;
+  margin: 40px auto;
+  max-width: 1100px; /* ortalama genişlik ayarı */
+}
+
+    .service{
+      background:#fff;
+      border-radius:10px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      padding:20px;
+    }
+    .service img{
+      width:100%;
+      border-radius:10px;
+    }
+    .service h4{
+      color:var(--blue);
+      margin:10px 0 8px;
+    }
+    .service p{color:#555;}
+
+    /* ===== FOOTER ===== */
+    footer{
+      background-color:var(--blue);
+      color:#ddd;
+      text-align:center;
+      padding:25px;
+      margin-top:60px;
+      font-size:14px;
+    }
+    footer a{
+      color:var(--gold);
+      text-decoration:none;
+    }
+    footer a:hover{text-decoration:underline;}
+
+    /* ===== HİZMET BÖLGELERİ ===== */
+.service-area {
+  text-align: center;
+  padding: 40px 60px;
+  background-color: #fff;
+  margin: 40px 0;
+}
+
+.service-area h3 {
+  color: var(--blue);
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.service-area h3::after {
+  content: "";
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: 2px;
+  background-color: var(--gold);
+  margin: 10px auto 25px;
+  opacity: 0.8;
+}
+
+.service-area p {
+  font-size: 17px;
+  color: #444;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto 30px;
+}
+
+.districts {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.districts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.districts li {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+/* ================================================= */
+/* ===== MOBİL UYUMLULUK (RESPONSIVE DESIGN) ===== */
+/* ================================================= */
+
+@media (max-width: 768px) {
+
+/* ===== HEADER / NAVBAR (MOBİL) ===== */
+header {
+  /* 3 sütunlu yapıyı tek sütuna indiriyoruz */
+  grid-template-columns: 1fr;
+  /* Her şeyi ortalamak için boşlukları ayarlıyoruz */
+  padding: 10px 20px;
+  justify-items: center;
+  gap: 10px; /* Logo, başlık ve menü arasına boşluk koyar */
+}
+.logo {
+  height: 70px; /* Logoyu mobilde 100px'den 70px'e düşürdük */
+}
+
+header h1 {
+  font-size: 24px; /* Başlık yazısını biraz küçültüyoruz */
+}
+
+nav ul {
+  /* Menüyü yan yana yerine ortaya alıyoruz */
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li a {
+  font-size: 14px; /* Menü yazılarını biraz küçültüyoruz */
+}
+
+
+/* ===== GENEL İÇERİK (MOBİL) ===== */
+.content, .service-area {
+  padding: 30px 20px; /* Kenar boşluklarını mobilde azaltıyoruz */
+}
+
+
+/* ===== HİZMETLER KARTLARI (MOBİL) ===== */
+.services {
+  /* 2 sütunlu yapıyı tek sütuna indiriyoruz */
+  grid-template-columns: 1fr;
+  gap: 30px; /* Kartlar arasına dikey boşluk koyuyoruz */
+}
+
+
+/* ===== HİZMET BÖLGELERİ (MOBİL) ===== */
+.districts {
+  /* İlçe listesini yan yana değil alt alta gösteriyoruz */
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+}
+}
+/* ===== HİZMETLERE YÖNLENDİRME STİLLERİ ===== */
+.cta-services {
+  background-color: var(--bg);
+  padding: 60px 40px;
+  text-align: center;
+}
+.cta-services h2 {
+  color: var(--blue);
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+.cta-services p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+.cta-button.secondary {
+  background-color: transparent;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  font-weight: 700;
+}
+.cta-button.secondary:hover {
+  background-color: var(--blue);
+  color: #fff;
+}
+/* ===== HAKKIMIZDA BÖLÜMÜ STİLLERİ ===== */
+.about-us {
+  padding: 60px 40px;
+  background-color: #fff; /* Arkaplanı beyaz yaparak diğer bölümlerden ayırır */
+  text-align: center;
+}
+
+.about-us h3 {
+  color: var(--blue);
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about-us h3::after {
+  content: "";
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: 2px;
+  background-color: var(--gold);
+  margin: 10px auto 25px;
+  opacity: 0.8;
+}
+
+.about-us p {
+  font-size: 18px;
+  color: #444;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+}
+  </style>
+</head>
+<body id="anasayfa">
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo-left">
+      <img src="Kale makine images/logo.png" alt="Kale Makine Logo" class="logo">
+    </div>
+  
+    <h1><a href="#anasayfa">KALE MAKİNE</a></h1>
+  
+    <nav>
+      <ul>
+        <li><a href="#anasayfa">ANA SAYFA</a></li>
+        <li><a href="hizmetler.html">HİZMETLER</a></li> <li><a href="#hakkimizda">HAKKIMIZDA</a></li>
+        <li><a href="#iletisim">İLETİŞİM</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Et, Kıyma ve Hamur Makinelerinde Uzman Servis</h2>
+    <a href="tel:+905357831854" class="cta-button">📞 Hemen Arayın</a>
+  </section>
+
+  <!-- CONTENT -->
+  <section id="hakkimizda" class="about-us">
+    <h3>HAKKIMIZDA</h3>
+    <p>
+      30 yılı aşkın sektör tecrübemizi, 2017 yılında kurduğumuz Kale Makine çatısı altında sizlerle buluşturuyoruz. Kurulduğumuz günden beri benimsediğimiz en temel ilkelerimiz; müşterilerimize karşı daima <strong>dürüst</strong> olmak, arızalara <strong>hızlı</strong> müdahale etmek ve yaptığımız her işin arkasında durarak <strong>garantili</strong> ve <strong>güvenilir</strong> çözümler sunmaktır. Amacımız, işletmenizin kalbi olan makinelerinizi ilk günkü verimiyle size teslim ederek, iş akışınızın kesintiye uğramasını önlemektir.
+    </p>
+  </section>
+  
+  <section class="cta-services">
+    <h2>Profesyonel Servis ve Çözümler</h2>
+    <p>Endüstriyel kıyma, hamur, et ve soğan makineleri için sunduğumuz tüm tamir, bakım ve satış hizmetlerimizi detaylı olarak incelemek için aşağıdaki butona tıklayın.</p>
+    <a href="hizmetler.html" class="cta-button secondary">Tüm Hizmetleri Gör</a>
+  </section>
+
+  <section class="service-area">
+    <h3>Hizmet Bölgelerimiz</h3>
+    <p>İstanbul Anadolu Yakası'nın tüm ilçelerine yerinde servis hizmeti sunuyoruz. Başlıca hizmet verdiğimiz bölgeler:</p>
+    <div class="districts">
+      <ul>
+        <li>📍 Maltepe</li>
+        <li>📍 Ataşehir</li>
+        <li>📍 Beykoz</li>
+        <li>📍 Çekmeköy</li>
+        <li>📍 Kadıköy</li>
+        <li>📍 Kartal</li>
+      </ul>
+      <ul>
+        <li>📍 Pendik</li>
+        <li>📍 Sancaktepe</li>
+        <li>📍 Sultanbeyli</li>
+        <li>📍 Tuzla</li>
+        <li>📍 Ümraniye</li>
+        <li>📍 Üsküdar</li>
+      </ul>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer id="iletisim">
+    <p>📍 Adres: Tepeüstü, Kaşgarlı Mahmut Cd. No:33A, 34773 Ümraniye / İstanbul</p>
+    <p>📞 <a href="tel:+905357831854">0 (535) 783 18 54</a> | ✉️ <a href="mailto:info@kalemakine.com">info@kalemakine.com</a></p>
+    <p>🏭 Kale Makine — 2017'den Beri Et, Kıyma ve Hamur Makinelerinde Profesyonel Hizmet</p>
+    <p>© 2025 Kale Makine - Tüm Hakları Saklıdır.</p>
+  </footer>
+</body>
+</html>
