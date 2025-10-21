@@ -43,6 +43,26 @@
     nav ul { list-style: none; display: flex; justify-content: flex-end; align-items: center; gap: 25px; margin: 0; padding: 0; }
     nav ul li a { display: inline-block; color: #fff; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; }
     nav ul li a:hover { color: #ffc600; transform: scale(1.1); }
+    nav ul li a {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--gold);
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
     
     /* ===== YENİ HİZMET DETAY SAYFASI STİLLERİ ===== */
     .hizmet-detay-container {
@@ -76,6 +96,14 @@
       border-radius: 12px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     }
+    /* Kart hover efekti (hizmetler sayfasındaki .hizmet-item satırları için) */
+.hizmet-item {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hizmet-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
     .hizmet-item:nth-child(even) {
       flex-direction: row-reverse;
     }
@@ -282,6 +310,35 @@
         gap: 20px;
       }
     }
+    @keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+#toTop{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--blue);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  cursor: pointer;
+  display: none;               /* başlangıçta gizli */
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+#toTop:hover{ transform: scale(1.05); }
+#toTop.show{ display: block; opacity: 1; }
+
+
   </style>
 </head>
 
@@ -301,11 +358,11 @@
     </nav>
   </header>
 
-  <main class="hizmet-detay-container">
+  <main class="hizmet-detay-container reveal">
     <h1>Detaylı Hizmetlerimiz</h1>
     <p class="sayfa-aciklamasi">Kale Makine olarak, endüstriyel mutfak ekipmanlarınız için sunduğumuz profesyonel tamir, bakım ve satış hizmetlerinin detaylarını aşağıda bulabilirsiniz.</p>
 
-    <article class="hizmet-item">
+    <article class="hizmet-item reveal">
       <div class="hizmet-gorsel">
         <img src="Kale makine images/kıyma.jpeg" alt="Kıyma Makinesi Tamiri ve Servisi">
       </div>
@@ -316,7 +373,7 @@
       </div>
     </article>
 
-    <article class="hizmet-item">
+    <article class="hizmet-item reveal">
       <div class="hizmet-gorsel">
         <img src="Kale makine images/zirh-makine.jpeg" alt="Zırh Kıyması ve Cutter Makinesi Tamiri">
       </div>
@@ -327,7 +384,7 @@
       </div>
     </article>
 
-    <article class="hizmet-item">
+    <article class="hizmet-item reveal">
       <div class="hizmet-gorsel">
         <img src="Kale makine images/hamur.jpg" alt="Planet Tipi Hamur Yoğurma Makinesi Servisi">
       </div>
@@ -338,7 +395,7 @@
       </div>
     </article>
 
-    <article class="hizmet-item">
+    <article class="hizmet-item reveal">
       <div class="hizmet-gorsel">
         <img src="Kale makine images/Spiral.jpeg" alt="Spiral Hamur Mikseri Servisi">
       </div>
@@ -349,7 +406,7 @@
       </div>
     </article>
 
-    <article class="hizmet-item">
+    <article class="hizmet-item reveal">
       <div class="hizmet-gorsel">
         <img src="Kale makine images/açma.jpg" alt="Hamur Açma Makinesi Onarımı">
       </div>
@@ -360,7 +417,7 @@
       </div>
     </article>
 
-    <article class="hizmet-item">
+    <article class="hizmet-item reveal">
       <div class="hizmet-gorsel">
         <img src="Kale makine images/soğan.webp" alt="Soğan Doğrama Makinesi Bakımı">
       </div>
@@ -546,7 +603,18 @@
     
     });
     </script>
-    
-    
+    <button id="toTop" aria-label="Yukarı çık">↑</button>
+
+    <script>
+      // Yukarı çık butonu görünür/gizli
+      (function(){
+        const btn = document.getElementById('toTop');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) { btn.classList.add('show'); }
+          else { btn.classList.remove('show'); }
+        });
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      })();
+    </script>    
 </body>
 </html>

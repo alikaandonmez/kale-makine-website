@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="keywords" content="Kale Makine, kıyma makinesi tamiri, hamur mikseri servisi, endüstriyel makine bakım, Ümraniye, Anadolu Yakası">
+<meta name="author" content="Kale Makine">
   <title>Kale Makine | Kıyma & Hamur Makineleri Tamiri</title>
   <style>
     :root{
@@ -15,11 +17,13 @@
     html {
   scroll-behavior: smooth;
 }
-    body{
-      font-family:"Segoe UI",Arial,sans-serif;
-      background:linear-gradient(180deg,#ffffff 0%,var(--bg) 100%);
-      color:var(--text);
-    }
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at 20% 20%, #ffffff 0%, #f3f4f6 50%, #e8ecf3 100%);
+  color: var(--text);
+  transition: background 0.6s ease, color 0.3s ease;
+}
+
 
     /* ===== NAVBAR ===== */
     header {
@@ -87,6 +91,26 @@ nav ul li a:hover {
   color: #ffc600;
   transform: scale(1.1);
 }
+nav ul li a {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--gold);
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
 
     /* ===== HERO ===== */
     .hero{
@@ -169,13 +193,52 @@ nav ul li a:hover {
   margin: 40px auto;
   max-width: 1100px; /* ortalama genişlik ayarı */
 }
+/* Kart hover efekti (üzerine gelince animasyon) */
+.service {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-    .service{
-      background:#fff;
-      border-radius:10px;
-      box-shadow:0 4px 8px rgba(0,0,0,0.1);
-      padding:20px;
-    }
+.service:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+
+.service {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  padding: 22px;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0.3), rgba(255,255,255,0.05));
+  transform: skewX(-25deg);
+}
+
+.service:hover::before {
+  animation: shine 1s ease forwards;
+}
+
+@keyframes shine {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
+.service:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+}
+
     .service img{
       width:100%;
       border-radius:10px;
@@ -263,6 +326,12 @@ nav ul li a:hover {
 /* ================================================= */
 
 @media (max-width: 768px) {
+  /* Mobilde butonlar tam genişlik olsun */
+.cta-button {
+  width: 100%;
+  text-align: center;
+}
+
 
 /* ===== HEADER / NAVBAR (MOBİL) ===== */
 header {
@@ -374,6 +443,59 @@ nav ul li a {
   max-width: 800px;
   margin: 0 auto;
 }
+/* Fade-in animasyonu */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Bu sınıfı verdiğimiz her şey yumuşakçe görünecek */
+.reveal {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+#toTop{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--blue);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  cursor: pointer;
+  display: none;               /* başlangıçta gizli */
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+/* ===== HERO ANİMASYONLARI ===== */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+  60% { transform: translateY(-6px); }
+}
+
+/* Uygulama */
+.hero h2 {
+  animation: fadeInDown 1s ease forwards;
+}
+
+.hero .cta-button {
+  animation: bounceIn 1.4s ease forwards;
+  animation-delay: 0.8s;
+}
+
+#toTop:hover{ transform: scale(1.05); }
+#toTop.show{ display: block; opacity: 1; }
+
   </style>
 </head>
 <body id="anasayfa">
@@ -396,26 +518,26 @@ nav ul li a {
   
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero reveal">
     <h2>Et, Kıyma ve Hamur Makinelerinde Uzman Servis</h2>
     <a href="tel:+905357831854" class="cta-button">📞 Hemen Arayın</a>
   </section>
 
   <!-- CONTENT -->
-  <section id="hakkimizda" class="about-us">
+  <section id="hakkimizda" class="about-us reveal">
     <h3>HAKKIMIZDA</h3>
     <p>
       30 yılı aşkın sektör tecrübemizi, 2017 yılında kurduğumuz Kale Makine çatısı altında sizlerle buluşturuyoruz. Kurulduğumuz günden beri benimsediğimiz en temel ilkelerimiz; müşterilerimize karşı daima <strong>dürüst</strong> olmak, arızalara <strong>hızlı</strong> müdahale etmek ve yaptığımız her işin arkasında durarak <strong>garantili</strong> ve <strong>güvenilir</strong> çözümler sunmaktır. Amacımız, işletmenizin kalbi olan makinelerinizi ilk günkü verimiyle size teslim ederek, iş akışınızın kesintiye uğramasını önlemektir.
     </p>
   </section>
   
-  <section class="cta-services">
+  <section class="cta-services reveal">
     <h2>Profesyonel Servis ve Çözümler</h2>
     <p>Endüstriyel kıyma, hamur, et ve soğan makineleri için sunduğumuz tüm tamir, bakım ve satış hizmetlerimizi detaylı olarak incelemek için aşağıdaki butona tıklayın.</p>
     <a href="hizmetler.html" class="cta-button secondary">Tüm Hizmetleri Gör</a>
   </section>
 
-  <section class="service-area">
+  <section class="service-area reveal">
     <h3>Hizmet Bölgelerimiz</h3>
     <p>İstanbul Anadolu Yakası'nın tüm ilçelerine yerinde servis hizmeti sunuyoruz. Başlıca hizmet verdiğimiz bölgeler:</p>
     <div class="districts">
@@ -442,7 +564,19 @@ nav ul li a {
     <p>📍 Adres: Tepeüstü, Kaşgarlı Mahmut Cd. No:33A, 34773 Ümraniye / İstanbul</p>
     <p>📞 <a href="tel:+905357831854">0 (535) 783 18 54</a> | ✉️ <a href="mailto:info@kalemakine.com">info@kalemakine.com</a></p>
     <p>🏭 Kale Makine — 2017'den Beri Et, Kıyma ve Hamur Makinelerinde Profesyonel Hizmet</p>
-   </p>aşkııım)</p>
+<p>Dönmezler SUNAAR :)</p>
   </footer>
+  <button id="toTop" aria-label="Yukarı çık">↑</button>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('toTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) { btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+      });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+  </script>  
 </body>
 </html>
