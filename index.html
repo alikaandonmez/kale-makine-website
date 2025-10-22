@@ -113,22 +113,39 @@ nav ul li a:hover::after {
 
 
     /* ===== HERO ===== */
-    .hero{
-      background-color:#fff;
-      text-align:center;
-      padding:80px 20px 40px;
-      display: flex;
+    /* HERO (güncelle) */
+.hero{
+  position: relative;
+  min-height: 340px;
+  display: flex;
   flex-direction: column;
   align-items: center;
-    }
-    .hero h2{
-      background-color:#555;
-      color:#fff;
-      display:inline-block;
-      padding:15px 25px;
-      border-radius:8px;
-      font-size:24px;
-    }
+  justify-content: center;
+
+  /* arka plan foto */
+  background:
+    linear-gradient(rgba(0,43,92,0.65), rgba(0,43,92,0.65)), /* koyu lacivert overlay */
+    url("Kale makine images/hero-bg.jpg") center/cover no-repeat;
+  padding: 80px 20px 40px;
+  text-align: center;
+  color: #fff;
+}
+
+    /* HERO başlık (güncelle) */
+.hero h2{
+  display: inline-block;
+  margin: 0;
+  padding: 16px 24px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: .3px;
+
+  background: rgba(0,43,92,0.85);
+  border-left: 6px solid var(--gold);
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
 
     /* ===== HAREKETE GEÇİRİCİ BUTON (CTA) ===== */
 .cta-button {
@@ -249,6 +266,107 @@ nav ul li a:hover::after {
     }
     .service p{color:#555;}
 
+ /* ===== HAMBURGER MENÜ (YENİ) ===== */
+.hamburger {
+  display: none;              /* masaüstünde görünmesin */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  z-index: 999;
+}
+.hamburger span {
+  width: 100%;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* ===== MOBİL (DÜZGÜN, TEK BLOK) ===== */
+@media (max-width: 768px) {
+
+/* Hamburger menü */
+.hamburger {
+  display: flex;
+}
+
+nav ul {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  left: 0;
+  background-color: var(--blue);
+  flex-direction: column;
+  align-items: center; /* ortalama düzeltmesi */
+  gap: 0;
+  padding: 0;
+  display: none; /* başlangıçta gizli */
+}
+
+nav ul.show {
+  display: flex; /* hamburger tıklanınca açılır */
+}
+
+nav ul li {
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+nav ul li a {
+  display: block;
+  width: 100%;
+  padding: 14px 25px;
+  font-size: 16px;
+  text-align: center; /* yazıyı ortalar */
+}
+
+header {
+  grid-template-columns: 1fr;
+  padding: 10px 20px;
+  justify-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 70px;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+.cta-button {
+  width: 100%;
+  text-align: center;
+}
+
+.services {
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.content,
+.service-area {
+  padding: 30px 20px;
+}
+
+.districts {
+  flex-direction: column;
+  align-items: center;
+}
+}
+
+
     /* ===== FOOTER ===== */
     footer{
       background-color:var(--blue);
@@ -325,42 +443,6 @@ nav ul li a:hover::after {
 /* ===== MOBİL UYUMLULUK (RESPONSIVE DESIGN) ===== */
 /* ================================================= */
 
-@media (max-width: 768px) {
-  /* Mobilde butonlar tam genişlik olsun */
-.cta-button {
-  width: 100%;
-  text-align: center;
-}
-
-
-/* ===== HEADER / NAVBAR (MOBİL) ===== */
-header {
-  /* 3 sütunlu yapıyı tek sütuna indiriyoruz */
-  grid-template-columns: 1fr;
-  /* Her şeyi ortalamak için boşlukları ayarlıyoruz */
-  padding: 10px 20px;
-  justify-items: center;
-  gap: 10px; /* Logo, başlık ve menü arasına boşluk koyar */
-}
-.logo {
-  height: 70px; /* Logoyu mobilde 100px'den 70px'e düşürdük */
-}
-
-header h1 {
-  font-size: 24px; /* Başlık yazısını biraz küçültüyoruz */
-}
-
-nav ul {
-  /* Menüyü yan yana yerine ortaya alıyoruz */
-  justify-content: center;
-  gap: 20px;
-}
-
-nav ul li a {
-  font-size: 14px; /* Menü yazılarını biraz küçültüyoruz */
-}
-
-
 /* ===== GENEL İÇERİK (MOBİL) ===== */
 .content, .service-area {
   padding: 30px 20px; /* Kenar boşluklarını mobilde azaltıyoruz */
@@ -389,6 +471,18 @@ nav ul li a {
   padding: 60px 40px;
   text-align: center;
 }
+.cta-services h2 {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-services p {
+  text-align: center;
+  margin: 10px auto 30px;
+  max-width: 700px;
+}
+
 .cta-services h2 {
   color: var(--blue);
   font-size: 28px;
@@ -488,10 +582,16 @@ nav ul li a {
   animation: fadeInDown 1s ease forwards;
 }
 
-.hero .cta-button {
-  animation: bounceIn 1.4s ease forwards;
-  animation-delay: 0.8s;
+/* HERO buton (küçük dokunuş) */
+.hero .cta-button{
+  margin-top: 22px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+  border: 2px solid rgba(255,255,255,0.15);
 }
+.hero .cta-button:hover{
+  transform: translateY(-1px) scale(1.05);
+}
+
 
 #toTop:hover{ transform: scale(1.05); }
 #toTop.show{ display: block; opacity: 1; }
@@ -514,6 +614,13 @@ nav ul li a {
         <li><a href="#iletisim">İLETİŞİM</a></li>
       </ul>
     </nav>
+    <!-- Hamburger buton -->
+<div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
   </header>
   
 
@@ -578,5 +685,15 @@ nav ul li a {
       btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     })();
   </script>  
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.querySelector('nav ul');
+  
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('show');
+    });
+  </script>
+  
 </body>
 </html>
