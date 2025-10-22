@@ -7,57 +7,57 @@
   <meta name="description" content="Kale Makine olarak endüstriyel kıyma, hamur, zırh ve cutter makineleri için profesyonel tamir, bakım ve servis hizmeti sunmaktayız. Garantili çözümler.">
 
   <style>
-    :root{
-      --blue:#002b5c;
-      --gold:#ffcc00;
-      --bg:#f3f4f6;
-      --text:#222;
-    }
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html {
-      scroll-behavior: smooth;
-    }
 
-    body {
+   /* ===== RENKLER ===== */
+:root {
+  --blue: #002b5c;
+  --gold: #ffcc00;
+  --bg: #f3f4f6;
+  --text: #222;
+}
+
+/* ===== GENEL AYARLAR ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: radial-gradient(circle at 20% 20%, #ffffff 0%, #f3f4f6 50%, #e8ecf3 100%);
   color: var(--text);
   transition: background 0.6s ease, color 0.3s ease;
 }
-    
-    /* ===== NAVBAR (TÜM SAYFALARDA AYNI) ===== */
-    header {
+
+/* ===== HEADER ===== */
+header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  background-color: #002b5c;
+  background-color: var(--blue);
   color: #fff;
-  padding: 10px 60px;
+  padding: 12px 60px;
   position: sticky;
   top: 0;
-  z-index: 9990;
-  box-shadow: 0 6px 15px rgba(255, 204, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  box-shadow: 0 6px 15px rgba(255, 204, 0, 0.25),
+              0 4px 10px rgba(0, 0, 0, 0.35);
 }
 
-
-
-/* Sol: logo */
+/* Sol logo */
 .logo-left {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 .logo {
-  height: 100px;
+  height: 105px;
   width: auto;
 }
 
 /* Orta: başlık */
 header h1 {
   text-align: center;
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.9px;
   color: #fff;
   text-transform: uppercase;
   margin: 0;
@@ -68,7 +68,8 @@ header h1 a {
   text-decoration: none; /* Altındaki çizgiyi kaldır */
 }
 
-/* Sağ: Menü */
+
+/* Sağ menü */
 nav ul {
   list-style: none;
   display: flex;
@@ -83,7 +84,7 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 18px;
   transition: all 0.3s ease;
 }
 
@@ -93,7 +94,8 @@ nav ul li a:hover {
 }
 nav ul li a {
   position: relative;
-  padding-bottom: 4px;
+  padding-bottom: 6px 0;
+  line-height: 1.2;
 }
 
 nav ul li a::after {
@@ -111,299 +113,22 @@ nav ul li a:hover::after {
   width: 100%;
 }
 
-    /* ===== YENİ HİZMET DETAY SAYFASI STİLLERİ ===== */
-    .hizmet-detay-container {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 20px;
-    }
-    .hizmet-detay-container h1 {
-      text-align: center;
-      color: var(--blue);
-      font-size: 32px;
-      margin-bottom: 15px;
-    }
-    .sayfa-aciklamasi {
-      font-size: 18px;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 60px;
-      text-align: center;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hizmet-item {
-      display: flex;
-      gap: 40px;
-      align-items: center;
-      margin-bottom: 80px;
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    }
-    /* Kart hover efekti (hizmetler sayfasındaki .hizmet-item satırları için) */
-.hizmet-item {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.hizmet-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-}
-    .hizmet-item:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-    .hizmet-gorsel {
-      flex: 1 1 40%;
-    }
-    .hizmet-gorsel img {
-      width: 100%;
-      border-radius: 8px;
-      display: block;
-    }
-    .hizmet-aciklama {
-      flex: 1 1 60%;
-    }
-    .hizmet-aciklama h2 {
-      color: var(--blue);
-      border-bottom: 2px solid var(--gold);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-      font-size: 24px;
-    }
-    .hizmet-aciklama p {
-      font-size: 17px;
-      line-height: 1.7;
-      color: #444;
-    }
 
-    /* ===== SERVİS FORMU BUTONU STİLİ ===== */
-    .servis-form-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: var(--blue);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 6px;
-      border: 2px solid var(--blue);
-      transition: all 0.3s ease;
-    }
-    .servis-form-btn:hover {
-      background-color: transparent;
-      color: var(--blue);
-    }
-    
-    /* ===== POP-UP FORM (MODAL) STİLLERİ ===== */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 200;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      visibility: hidden;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-    .modal.aktif {
-      visibility: visible;
-      opacity: 1;
-    }
-    .modal-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.7);
-    }
-    .modal-icerik {
-      position: relative;
-      background-color: #fff;
-      padding: 30px 40px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      transform: translateY(-20px);
-      transition: all 0.3s ease;
-    }
-    .modal.aktif .modal-icerik {
-      transform: translateY(0);
-    }
-    .modal-kapat {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 30px;
-      cursor: pointer;
-      color: #888;
-    }
-    .modal-icerik h2 { color: var(--blue); margin-bottom: 20px; }
-    .form-grup { margin-bottom: 20px; }
-    .form-grup label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
-    /* --- Form içi eleman stilleri (select ve textarea) --- */
-.form-grup select,
-.form-grup textarea {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-family: "Segoe UI", Arial, sans-serif;
-  font-size: 15px;
-  color: #333;
-  padding: 10px 12px;
-  box-sizing: border-box;
-  transition: all 0.2s ease;
-  background-color: #fff;
-}
-
-/* --- Select kutusu --- */
-.form-grup select {
-  appearance: none;
-  height: 45px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23666' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 10px;
-  cursor: pointer;
-}
-
-/* --- Textarea kutusu --- */
-.form-grup textarea {
-  resize: none;
-  height: 110px;
-  line-height: 1.5;
-  overflow-y: auto;
-}
-
-/* --- Hover & Focus stilleri --- */
-.form-grup select:hover,
-.form-grup textarea:hover {
-  border-color: #888;
-}
-
-.form-grup select:focus,
-.form-grup textarea:focus {
-  outline: none;
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(0, 43, 92, 0.15);
-}
-  /* --- Butonun aktif/pasif görünümünü düzenliyoruz --- */
-.form-gonder-btn {
-  display: block;                /* 🔥 tam genişlikte */
-  width: 100%;
-  padding: 12px 0;
-  text-align: center;
-  background: linear-gradient(135deg, #25D366, #20b857);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-  margin-top: 10px;
-}
-
-/* --- Pasifken (disabled) görünüm --- */
-.form-gonder-btn:disabled {
-  background: #bcbcbc;
-  color: #eee;
-  box-shadow: none;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* --- Aktifken hover efekti --- */
-.form-gonder-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #28e070, #18a758);
-  box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
-  transform: scale(1.02);
-}
-
-/* ===== GARANTİLİ ROZET ===== */
-.badge {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  background: var(--gold);
-  color: var(--blue);
-  padding: 5px 12px;
-  font-size: 13px;
-  font-weight: 700;
-  border-radius: 20px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  letter-spacing: 0.3px;
-  animation: badgePulse 3s infinite ease-in-out;
-}
-
-@keyframes badgePulse {
-  0%,100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,204,0,0.4); }
-  50% { transform: scale(1.1); box-shadow: 0 0 15px rgba(255,204,0,0.8); }
-}
-
-/* Parlama (shine) efekti */
-.hizmet-gorsel {
-  position: relative;
-  overflow: hidden;
-}
-
-.hizmet-gorsel::before {
-  content: "";
-  position: absolute;
-  top: 0; left: -75%;
-  width: 50%; height: 100%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.1), rgba(255,255,255,0.4), rgba(255,255,255,0.1));
-  transform: skewX(-25deg);
-}
-
-.hizmet-gorsel:hover::before {
-  animation: shine 1s ease forwards;
-}
-
-@keyframes shine {
-  0% { left: -75%; }
-  100% { left: 125%; }
-}
-
-    /* ===== FOOTER (TÜM SAYFALARDA AYNI) ===== */
-    footer{
-      background-color:var(--blue);
-      color:#ddd;
-      text-align:center;
-      padding:25px;
-      font-size:14px;
-    }
-    footer a{ color:var(--gold); text-decoration:none; }
-    footer a:hover{text-decoration:underline;}
-    
-
-/* ===== MOBİL MENÜ ve HAMBURGER (TEK ve DOĞRU BLOK) ===== */
-
-/* Hamburger ikonunun kendisi */
+/* ===== HAMBURGER ===== */
 .hamburger {
-  display: none;      /* Masaüstünde gizli kalsın */
+  display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
   width: 36px;
   height: 30px;
   cursor: pointer;
-  position: absolute;   /* Konumlandırma için gerekli */
+  position: absolute;
   top: 22px;
   right: 25px;
-  z-index: 1001;        /* 🔥 İkon, açılan menüden bile üstte olsun ki tıklanabilsin */
+  z-index: 999;
 }
-
 .hamburger span {
   width: 100%;
   height: 4px;
@@ -411,64 +136,186 @@ nav ul li a:hover::after {
   border-radius: 3px;
   transition: all 0.3s ease;
 }
+.hamburger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
 
-/* Tıklandığında çarpı (X) ikonuna dönüşme animasyonu */
-.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-
-/* Mobil ve Tablet Görünümü (768px ve altı) */
+/* ===== MOBİL ===== */
 @media (max-width: 768px) {
 
-  /* Header yapısını düzenle */
+ /* Hamburger menü */
+.hamburger {
+  display: flex;
+}
+
+nav ul {
+    position: absolute;
+    top: 70px;
+  right: 0;
+  left: 0;
+  background-color: var(--blue);
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  display: none;
+}
+
+  nav ul.show {
+  display: flex; /* hamburger tıklanınca açılır */
+}
+
+nav ul li {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+  nav ul li a {
+  display: block;
+  width: 100%;
+  padding: 14px 25px;
+  font-size: 16px;
+  text-align: center; /* yazıyı ortalar */
+}
+
   header {
     grid-template-columns: 1fr;
     padding: 10px 20px;
     justify-items: center;
     gap: 10px;
-  }
+}
+
   .logo { height: 70px; }
   header h1 { font-size: 24px; }
-  
-  /* Hamburger ikonu mobilde görünsün */
-  .hamburger {
-    display: flex;
-  }
-  
-  /* Açılacak olan menünün stil özellikleri */
-  nav ul {
-    position: absolute;   /* Konumlandırma için kritik */
-    top: 70px;            /* Header'ın hemen altında başlasın */
-    left: 0;
-    right: 0;
-    background-color: var(--blue);
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
-    gap: 0;
-    display: none;        /* Başlangıçta gizli olsun */
-    z-index: 1000;        /* 🔥🔥🔥 EN ÖNEMLİ KISIM! Menüyü her şeyin üstüne çıkarır. */
-  }
+}
 
-  /* JavaScript ile .show class'ı eklendiğinde menüyü göster */
-  nav ul.show {
-    display: flex;
-  }
+    :root{
+      --blue:#002b5c;
+      --gold:#ffcc00;
+      --bg:#f3f4f6;
+      --text:#222;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #ffffff 0%, #f3f4f6 50%, #e8ecf3 100%);
+      color: var(--text);
+      transition: background 0.6s ease, color 0.3s ease;
+    }
 
-  /* Menü elemanları */
-  nav ul li {
-    width: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-  }
+    /* ===== YUKARI ÇIK BUTONU (ORTAK STİL) ===== */
+#toTop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--blue);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+  cursor: pointer;
+  display: none;
+  z-index: 999; /* her şeyin üstünde kalır */
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
 
-  nav ul li a {
-    display: block;
-    width: 100%;
-    padding: 14px 25px;
-    text-align: center;
+#toTop.show {
+  display: block;
+  opacity: 1;
+}
+
+#toTop:hover {
+  transform: scale(1.08);
+}
+
+/* ===== MOBİLDE BOYUT VE POZİSYON ===== */
+@media (max-width: 768px) {
+  #toTop {
+    bottom: 40px;   /* biraz aşağı */
+    right: 18px;    /* hafif sağa */
+    width: 42px;    /* daha küçük boyut */
+    height: 42px;
+    font-size: 20px; /* ok işareti orantılı kalsın */
   }
 }
+    
+
+    /* ===== HİZMETLER SAYFASI STİLLERİ ===== */
+    .hizmet-detay-container { max-width: 1000px; margin: 60px auto; padding: 20px; }
+    .hizmet-detay-container h1 { text-align: center; color: var(--blue); font-size: 32px; margin-bottom: 15px; }
+    .sayfa-aciklamasi { font-size: 18px; color: #555; line-height: 1.6; margin-bottom: 60px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .hizmet-item { display: flex; gap: 40px; align-items: center; margin-bottom: 80px; background-color: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .hizmet-item:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+    .hizmet-item:nth-child(even) { flex-direction: row-reverse; }
+    .hizmet-gorsel { flex: 1 1 40%; position: relative; overflow: hidden; }
+    .hizmet-gorsel img { width: 100%; border-radius: 8px; display: block; }
+    .hizmet-aciklama { flex: 1 1 60%; }
+    .hizmet-aciklama h2 { color: var(--blue); border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-bottom: 20px; font-size: 24px; }
+    .hizmet-aciklama p { font-size: 17px; line-height: 1.7; color: #444; }
+
+    /* ===== SERVİS FORMU BUTONU STİLİ ===== */
+    .servis-form-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: var(--blue); color: #fff; text-decoration: none; font-weight: 600; border-radius: 6px; border: 2px solid var(--blue); transition: all 0.3s ease; }
+    .servis-form-btn:hover { background-color: transparent; color: var(--blue); }
+
+    /* ===== POP-UP FORM (MODAL) STİLLERİ ===== */
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; display: flex; justify-content: center; align-items: center; visibility: hidden; opacity: 0; transition: all 0.3s ease; }
+    .modal.aktif { visibility: visible; opacity: 1; }
+    .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); }
+    .modal-icerik { position: relative; background-color: #fff; padding: 30px 40px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); transform: translateY(-20px); transition: all 0.3s ease; }
+    .modal.aktif .modal-icerik { transform: translateY(0); }
+    .modal-kapat { position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 30px; cursor: pointer; color: #888; }
+    .modal-icerik h2 { color: var(--blue); margin-bottom: 20px; }
+    .form-grup { margin-bottom: 20px; }
+    .form-grup label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+    .form-grup select, .form-grup textarea { width: 100%; border: 1px solid #ccc; border-radius: 6px; font-family: "Segoe UI", Arial, sans-serif; font-size: 15px; color: #333; padding: 10px 12px; transition: all 0.2s ease; background-color: #fff; }
+    .form-grup select { appearance: none; height: 45px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23666' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 10px; cursor: pointer; }
+    .form-grup textarea { resize: none; height: 110px; line-height: 1.5; }
+    .form-grup select:hover, .form-grup textarea:hover { border-color: #888; }
+    .form-grup select:focus, .form-grup textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0, 43, 92, 0.15); }
+    .form-gonder-btn { width: 100%; padding: 12px; text-align: center; background: linear-gradient(135deg, #25D366, #20b857); color: #fff; border: none; border-radius: 6px; font-size: 17px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+    .form-gonder-btn:disabled { background: #bcbcbc; color: #eee; box-shadow: none; cursor: not-allowed; }
+    .form-gonder-btn:hover:not(:disabled) { background: linear-gradient(135deg, #28e070, #18a758); box-shadow: 0 0 15px rgba(37, 211, 102, 0.6); transform: scale(1.02); }
+
+    /* ===== GARANTİLİ ROZET, PARLAMA EFEKTİ vb. (Senin eklediklerin) ===== */
+    .badge { position: absolute; top: 18px; left: 18px; background: var(--gold); color: var(--blue); padding: 5px 12px; font-size: 13px; font-weight: 700; border-radius: 20px; box-shadow: 0 3px 8px rgba(0,0,0,0.2); letter-spacing: 0.3px; animation: badgePulse 3s infinite ease-in-out; }
+    @keyframes badgePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+    .hizmet-gorsel::before { content: ""; position: absolute; top: 0; left: -75%; width: 50%; height: 100%; background: linear-gradient(120deg, rgba(255,255,255,0.1), rgba(255,255,255,0.4), rgba(255,255,255,0.1)); transform: skewX(-25deg); }
+    .hizmet-gorsel:hover::before { animation: shine 1s ease forwards; }
+    @keyframes shine { from { left: -75%; } to { left: 125%; } }
+
+    /* ===== FOOTER ===== */
+    footer { background-color:var(--blue); color:#ddd; text-align:center; padding:25px; font-size:14px; margin-top: -20px; }
+    footer a { color:var(--gold); text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
+
+    /* ==================== MOBİL UYUMLULUK (TEK BLOK) ==================== */
+    @media (max-width: 768px) {
+      header { padding: 15px 25px; }
+      .logo { height: 70px; }
+      header h1 { display: none; }
+      .hamburger { display: flex; }
+      .nav-menu { position: absolute; top: 90px; /* Header yüksekliği */ left: 0; width: 100%; background-color: var(--blue); flex-direction: column; transform: translateY(-150%); transition: transform 0.5s ease-in-out; display: flex; }
+      .nav-menu.show { transform: translateY(0); }
+      .nav-menu ul { flex-direction: column; width: 100%; text-align: center; gap: 0; }
+      .nav-menu ul li { width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+      .nav-menu ul li a { display: block; width: 100%; padding: 18px; }
+      .nav-menu ul li a:hover::after { width: 0; }
+      .hizmet-item, .hizmet-item:nth-child(even) { flex-direction: column; padding: 20px; gap: 20px; }
+    }
+
   </style>
 </head>
 
@@ -488,8 +335,7 @@ nav ul li a:hover::after {
         <li><a href="index.html#iletisim">İLETİŞİM</a></li>
       </ul>
     </nav>
-  
-    <!-- Hamburger buton -->
+    
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
@@ -497,80 +343,57 @@ nav ul li a:hover::after {
     </div>
   </header>
   
-
-  <main class="hizmet-detay-container reveal">
+  <main class="hizmet-detay-container">
     <h1>Detaylı Hizmetlerimiz</h1>
     <p class="sayfa-aciklamasi">Kale Makine olarak, endüstriyel mutfak ekipmanlarınız için sunduğumuz profesyonel tamir, bakım ve satış hizmetlerinin detaylarını aşağıda bulabilirsiniz.</p>
-
-    <article class="hizmet-item reveal">
-      <div class="hizmet-gorsel">
-        <div class="badge">GARANTİLİ</div>
-        <img src="Kale makine images/kıyma.jpeg" alt="Kıyma Makinesi Tamiri ve Servisi">
-      </div>
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel"><div class="badge">GARANTİLİ</div><img src="Kale makine images/kıyma.jpeg" alt="Kıyma Makinesi Tamiri ve Servisi"></div>
       <div class="hizmet-aciklama">
         <h2>🔧 Kıyma Makinesi Tamiri ve Servisi</h2>
         <p>İşletmenizin en önemli ekipmanlarından olan endüstriyel kıyma makineleriniz için kapsamlı servis hizmeti sunuyoruz. Zamanla körelen bıçakların bilenmesi, motor gücü onarımı, dişli sıyırma sorunları ve periyodik bakımlarla makinenizin ömrünü uzatıyoruz.</p>
         <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
       </div>
     </article>
-
-    <article class="hizmet-item reveal">
-      <div class="hizmet-gorsel">
-        <div class="badge">GARANTİLİ</div>
-        <img src="Kale makine images/zirh-makine.jpeg" alt="Zırh Kıyması ve Cutter Makinesi Tamiri">
-      </div>
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel"><div class="badge">GARANTİLİ</div><img src="Kale makine images/zirh-makine.jpeg" alt="Zırh Kıyması ve Cutter Makinesi Tamiri"></div>
       <div class="hizmet-aciklama">
         <h2>🔪 Zırh Kıyması ve Cutter Makinesi Tamiri</h2>
         <p>Kebap ustalarının vazgeçilmezi olan zırh ve cutter makinelerinin bıçak bakımı, motor arızaları ve hazne sorunlarını gideriyoruz. Eti ezmeden, tam kıvamında parçalayan makinelerinizin ilk günkü keskinliğiyle çalışmasını sağlıyoruz.</p>
         <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
       </div>
     </article>
-
-    <article class="hizmet-item reveal">
-      <div class="hizmet-gorsel">
-        <div class="badge">GARANTİLİ</div>
-        <img src="Kale makine images/hamur.jpg" alt="Planet Tipi Hamur Yoğurma Makinesi Servisi">
-      </div>
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel"><div class="badge">GARANTİLİ</div><img src="Kale makine images/hamur.jpg" alt="Planet Tipi Hamur Yoğurma Makinesi Servisi"></div>
       <div class="hizmet-aciklama">
         <h2>⚙️ Planet Tipi Hamur Yoğurma Servisi</h2>
         <p>Pastane ve fırınların vazgeçilmezi olan planet mikserleriniz için kazan, motor, dişli ve kayış sorunlarında uzman servis hizmeti veriyoruz. Makinenizin verimini artıran periyodik bakımlarla işlerinizin aksamasını önlüyoruz.</p>
         <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
       </div>
     </article>
-
-    <article class="hizmet-item reveal">
-      <div class="hizmet-gorsel">
-        <img src="Kale makine images/Spiral.jpeg" alt="Spiral Hamur Mikseri Servisi">
-      </div>
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel"><img src="Kale makine images/Spiral.jpeg" alt="Spiral Hamur Mikseri Servisi"></div>
       <div class="hizmet-aciklama">
         <h2>🌀 Spiral Hamur Mikseri Servisi</h2>
         <p>Yoğun ekmek, pide ve pizza hamurları için özel olarak tasarlanmış spiral mikserlerin bakım ve onarımını yapıyoruz. Kazan dönüş mekanizması, spiral kol ve kontrol paneli arızalarına hızlı ve garantili çözümler sunuyoruz.</p>
         <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
       </div>
     </article>
-
-    <article class="hizmet-item reveal">
-      <div class="hizmet-gorsel">
-        <img src="Kale makine images/açma.jpg" alt="Hamur Açma Makinesi Onarımı">
-      </div>
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel"><img src="Kale makine images/açma.jpg" alt="Hamur Açma Makinesi Onarımı"></div>
       <div class="hizmet-aciklama">
         <h2>🧰 Hamur Açma Makinesi Servisi</h2>
         <p>Lahmacun, pide ve pizza hamuru açma makinelerinizin merdane, kalınlık ayarı ve bıçak mekanizmalarındaki arızaları hızla gideriyoruz. Gürültülü çalışma, dengesiz açma gibi problemlere yerinde ve garantili çözümler sunuyoruz.</p>
         <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
       </div>
     </article>
-
-    <article class="hizmet-item reveal">
-      <div class="hizmet-gorsel">
-        <img src="Kale makine images/soğan.webp" alt="Soğan Doğrama Makinesi Bakımı">
-      </div>
+    <article class="hizmet-item">
+      <div class="hizmet-gorsel"><img src="Kale makine images/soğan.webp" alt="Soğan Doğrama Makinesi Bakımı"></div>
       <div class="hizmet-aciklama">
         <h2>🔩 Endüstriyel Soğan Doğrama Makinesi</h2>
         <p>Restoran ve endüstriyel mutfaklarda kullanılan soğan doğrama makineleri için bıçak değişimi, motor bakımı ve kontrol paneli onarımı hizmetleri sunmaktayız. Hijyenik ve hızlı çözümlerle mutfağınızdaki yardımcınızın daima çalışır durumda olmasını sağlıyoruz.</p>
         <a href="#" class="servis-form-btn">Arıza Bildir / Fiyat Al</a>
       </div>
     </article>
-
   </main>
   
   <footer id="iletisim">
@@ -597,176 +420,138 @@ nav ul li a:hover::after {
         <div class="form-grup">
           <label for="mesaj">Sorununuz veya Talebiniz:</label>
           <textarea id="mesaj" name="mesaj" rows="4" maxlength="250" placeholder="Örnek: Makinenin motoru çalışmıyor, garip bir ses çıkarıyor... (Maksimum 250 karakter)"></textarea>
-<small id="char-count" style="display:block; text-align:right; color:#888; font-size:13px; margin-top:5px;">0 / 250</small>
-
-
+          <small id="char-count" style="display:block; text-align:right; color:#888; font-size:13px; margin-top:5px;">0 / 250</small>
         </div>
         <button type="submit" class="form-gonder-btn">WhatsApp'tan Gönder</button>
       </form>
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    
-      // ----- HTML ELEMENTLERİ -----
-      const formAcmaButonlari = document.querySelectorAll('.servis-form-btn');
+  <button id="toTop" aria-label="Yukarı çık">↑</button>
+
+<script>
+  const toTopBtn = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) toTopBtn.classList.add('show');
+    else toTopBtn.classList.remove('show');
+  });
+  toTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+<script>
+
+      const hamburger = document.getElementById('hamburger-menu');
+      const navMenu = document.getElementById('nav-menu');
+      if(hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('active');
+          navMenu.classList.toggle('show');
+        });
+      }
+
+      // ===== SADECE BU SAYFAYA ÖZEL: POP-UP FORM =====
       const modal = document.getElementById('servis-formu-modal');
-      const modalKapatButonu = document.querySelector('.modal-kapat');
-      const modalOverlay = document.querySelector('.modal-overlay');
-      const whatsappFormu = document.getElementById('whatsapp-formu');
-      const modalBaslik = document.querySelector('.modal-icerik h2');
-      const telefonNumarasi = '905357831854';
-      const mesajAlani = document.getElementById('mesaj');
-      const gonderBtn = whatsappFormu.querySelector('.form-gonder-btn');
-      const charCount = document.getElementById('char-count');
-    
-      // ----- EMOJİ TEMİZLEYİCİ -----
-      function stripLeadingEmoji(str) {
-        if (!str) return "";
-        const cp = str.codePointAt(0);
-        if (cp && cp >= 0x1F000) {
-          const jump = cp > 0xFFFF ? 2 : 1;
-          return str.slice(jump).trim();
+      if(modal) {
+        const formAcmaButonlari = document.querySelectorAll('.servis-form-btn');
+        const modalKapatButonu = document.querySelector('.modal-kapat');
+        const modalOverlay = document.querySelector('.modal-overlay');
+        const whatsappFormu = document.getElementById('whatsapp-formu');
+        const modalBaslik = document.querySelector('.modal-icerik h2');
+        const telefonNumarasi = '905357831854';
+        const mesajAlani = document.getElementById('mesaj');
+        const gonderBtn = whatsappFormu.querySelector('.form-gonder-btn');
+        const charCount = document.getElementById('char-count');
+
+        function stripLeadingEmoji(str) {
+          if (!str) return "";
+          const emojiRegex = /^[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F900}-\u{1F9FF}\u{1F1E0}-\u{1F1FF}]+\s*/u;
+          return str.replace(emojiRegex, '').trim();
         }
-        return str.trim();
-      }
-    
-      // ----- MODAL AÇMA -----
-      formAcmaButonlari.forEach(buton => {
-        buton.addEventListener('click', function (event) {
+
+        formAcmaButonlari.forEach(buton => {
+          buton.addEventListener('click', function (event) {
+            event.preventDefault();
+            const hizmetAciklama = buton.closest('.hizmet-aciklama');
+            const hizmetBasligiRaw = hizmetAciklama.querySelector('h2').innerText;
+            const hizmetBasligiTemiz = stripLeadingEmoji(hizmetBasligiRaw);
+            modalBaslik.innerText = `${hizmetBasligiTemiz} için Talep Formu`;
+            whatsappFormu.dataset.hizmet = hizmetBasligiTemiz;
+            modal.classList.add('aktif');
+          });
+        });
+
+        function modalKapat() {
+          modal.classList.remove('aktif');
+          whatsappFormu.reset();
+          charCount.textContent = "0 / 250";
+          charCount.style.color = "#888";
+          gonderBtn.disabled = true;
+          gonderBtn.style.opacity = "0.6";
+          gonderBtn.style.cursor = "not-allowed";
+        }
+        modalKapatButonu.addEventListener('click', modalKapat);
+        modalOverlay.addEventListener('click', modalKapat);
+
+        function isMobile() { return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent); }
+        function buildWhatsAppURL(phone, text) {
+          const encoded = encodeURIComponent(text);
+          return isMobile()
+            ? `https://wa.me/${phone}?text=${encoded}`
+            : `https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`;
+        }
+
+        whatsappFormu.addEventListener('submit', function (event) {
           event.preventDefault();
-          const hizmetAciklama = buton.closest('.hizmet-aciklama');
-          const hizmetBasligiRaw = hizmetAciklama.querySelector('h2').innerText;
-          const hizmetBasligiTemiz = stripLeadingEmoji(hizmetBasligiRaw);
-          modalBaslik.innerText = `${hizmetBasligiTemiz} için Talep Formu`;
-          whatsappFormu.dataset.hizmet = hizmetBasligiTemiz;
-          modal.classList.add('aktif');
+          const hizmetAdi = whatsappFormu.dataset.hizmet || "Hizmet";
+          const talepTipi  = document.getElementById('talep-tipi').value;
+          const mesaj      = mesajAlani.value.trim();
+          
+          if (mesaj.length < 5) return;
+
+          const whatsappMesaji =
+`— YENİ SERVİS TALEBİ —
+🛠️ Hizmet: ${hizmetAdi}
+🗂️ Talep Tipi: ${talepTipi}
+📝 Müşteri Notu: ${mesaj || "—"}
+
+────────────
+(Kale Makine Web Sitesi)`;
+      
+          const url = buildWhatsAppURL(telefonNumarasi, whatsappMesaji);
+          window.open(url, '_blank', 'noopener');
+          modalKapat();
         });
-      });
-    
-      // ----- MODAL KAPATMA -----
-      function modalKapat() {
-  modal.classList.remove('aktif');
 
-  // 🔹 Formu sıfırla (temizle)
-  whatsappFormu.reset();
-
-  // 🔹 Sayaç sıfırla
-  charCount.textContent = "0 / 250";
-  charCount.style.color = "#888";
-
-  // 🔹 Butonu pasif hale getir
-  gonderBtn.disabled = true;
-  gonderBtn.style.opacity = "0.6";
-  gonderBtn.style.cursor = "not-allowed";
-}
-
-      modalKapatButonu.addEventListener('click', modalKapat);
-      modalOverlay.addEventListener('click', modalKapat);
-    
-      // ----- WHATSAPP GÖNDERME -----
-      function isMobile() {
-        return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
-      }
-      function buildWhatsAppURL(phone, text) {
-  const encoded = encodeURIComponent(text);
-
-  if (isMobile()) {
-    // 📱 Mobilde klasik yöntem
-    return `https://wa.me/${phone}?text=${encoded}`;
-  }
-
-  // 💻 Masaüstü için önce uygulamayı dene
-  const whatsappDesktopURL = `whatsapp://send?phone=${phone}&text=${encoded}`;
-
-  // 🔹 Yalnızca uygulama açılamazsa web'e yönlendir
-  // "visibilitychange" olayıyla bunu kontrol ediyoruz
-  let appOpened = false;
-  const timeout = setTimeout(() => {
-    if (!appOpened) {
-      window.open(`https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`, '_blank', 'noopener');
-    }
-  }, 1000);
-
-  window.addEventListener("blur", () => { 
-    appOpened = true; 
-    clearTimeout(timeout); 
-  }, { once: true });
-
-  return whatsappDesktopURL;
-}
-
-
-    
-      whatsappFormu.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const hizmetAdi = whatsappFormu.dataset.hizmet || "Hizmet";
-        const talepTipi  = document.getElementById('talep-tipi').value;
-        const mesaj      = mesajAlani.value.trim();
-    
-        if (mesaj.length < 5) {
-          alert("Lütfen mesaj alanına en az 5 karakter yazınız.");
-          return;
+        function kontrolEt() {
+            const gecerli = mesajAlani.value.trim().length >= 5;
+            gonderBtn.disabled = !gecerli;
+            gonderBtn.style.opacity = gonderBtn.disabled ? "0.6" : "1";
+            gonderBtn.style.cursor = gonderBtn.disabled ? "not-allowed" : "pointer";
         }
-    
-        const whatsappMesaji =
-    `— YENİ SERVİS TALEBİ —
-    🛠️ Hizmet: ${hizmetAdi}
-    🗂️ Talep Tipi: ${talepTipi}
-    📝 Müşteri Notu: ${mesaj || "—"}
-    
-    ────────────
-    (Kale Makine Web Sitesi)`;
-    
-        const url = buildWhatsAppURL(telefonNumarasi, whatsappMesaji);
-        window.open(url, '_blank', 'noopener');
-        modalKapat();
-      });
-    
-      // ----- BUTON AKTİF / PASİF DURUMU -----
-      function kontrolEt() {
-        gonderBtn.disabled = mesajAlani.value.trim().length < 5;
-        gonderBtn.style.opacity = gonderBtn.disabled ? "0.6" : "1";
-        gonderBtn.style.cursor = gonderBtn.disabled ? "not-allowed" : "pointer";
-      }
-      mesajAlani.addEventListener('input', kontrolEt);
-      kontrolEt(); // Sayfa açıldığında kontrol et
-    
-      // ----- KARAKTER SAYACI -----
-      mesajAlani.addEventListener('input', () => {
-        const length = mesajAlani.value.length;
-        charCount.textContent = `${length} / 250`;
-    
-        // renk değişimi (opsiyonel)
-        if (length > 240) charCount.style.color = "red";
-        else if (length > 200) charCount.style.color = "orange";
-        else charCount.style.color = "#888";
-      });
-    
-    });
-    </script>
-    <button id="toTop" aria-label="Yukarı çık">↑</button>
+        mesajAlani.addEventListener('input', kontrolEt);
+        kontrolEt();
 
-    <script>
-      // Yukarı çık butonu görünür/gizli
-      (function(){
-        const btn = document.getElementById('toTop');
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 300) { btn.classList.add('show'); }
-          else { btn.classList.remove('show'); }
+        mesajAlani.addEventListener('input', () => {
+          const length = mesajAlani.value.length;
+          charCount.textContent = `${length} / 250`;
+          if (length > 240) charCount.style.color = "red";
+          else if (length > 200) charCount.style.color = "orange";
+          else charCount.style.color = "#888";
         });
-        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-      })();
-    </script>  
-    <script>
-      const hamburger = document.getElementById('hamburger');
-      const navMenu = document.querySelector('nav ul');
-    
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('show');
-      });
-    </script> 
+      }
+    });
+  </script>
+ <script>
+  const hamburger = document.getElementById('hamburger');
+  const navUl = document.querySelector('header nav ul');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navUl.classList.toggle('show');
+  });
+</script>
+
+  
 </body>
 </html>
